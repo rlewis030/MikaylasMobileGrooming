@@ -2,17 +2,17 @@ const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
 
 const PRECACHE_URLS = [
-    './index.php',
-    './',
-    './css/app.css',
-    './js/app.js',
+    '../index.php',
+    '../',
+    '../css/app.css',
+    '../js/app.js',
     // Bootstrap
-    './vendor/bootstrap/css/bootstrap.min.css',
-    './vendor/jquery/jquery.min.js',
-    './vendor/bootstrap/js/bootstrap.bundle.min.js',
+    '../vendor/bootstrap/css/bootstrap.min.css',
+    '../vendor/jquery/jquery.min.js',
+    '../vendor/bootstrap/js/bootstrap.bundle.min.js',
     // Precached Images
-    './assets/about.jpg',
-    './assets/Ramsay11.jpg',
+    '../assets/about.jpg',
+    '../assets/Ramsay11.jpg',
 ];
 
 // The install handler takes care of precaching the resources we always need
