@@ -39,7 +39,7 @@ $(function() {
 
 /* Service Worker Registration */
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./assets/sw.js')
+    navigator.serviceWorker.register('./sw.js')
         .then(() => {
             console.log('Service Worker Registered!');
         })
