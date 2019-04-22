@@ -440,7 +440,7 @@
                                 <i class="fas fa-mobile-alt fa-lg"></i>&nbsp;&nbsp;(519) 719-9592
                             </p>
                             <p>
-                                <i class="fas fa-envelope fa-lg"></i>&nbsp;&nbsp;mikayla.kimmel@hotmail.com
+                                <i class="fas fa-envelope fa-lg"></i>&nbsp;&nbsp;miksmobilegrooming@gmail.com
                             </p>
                         </div>
                         <div class="col-lg-4">
