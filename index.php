@@ -380,7 +380,7 @@
                                 <div class="col-lg-10 text-left" id="contact-form">
                                     <h3>Contact Me</h3>
 
-                                    <form>
+                                    <form method="POST">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
