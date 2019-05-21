@@ -37,6 +37,44 @@ $(function() {
     $('#year').html(theYear);
 });
 
+// EmailJS Configuration and Sending
+(function(){
+    emailjs.init("user_VrokykbQ58y3reC5WyIMb");
+})();
+
+function sendEmail(e) {
+    e.preventDefault();
+
+    // Capture Form Elements
+    var cFN = document.getElementById('contact-first-name');
+    var cLN = document.getElementById('contact-last-name');
+    var cE = document.getElementById('contact-email');
+    var cP = document.getElementById('contact-phone');
+    var cM = document.getElementById('contact-message');
+    var cS = document.getElementById('contact-status');
+
+    // Sent data via EmailJS
+    emailjs.send('gmail', 'mikayla_s_mobile_grooming', 
+    {
+        "contact_email": cE.value,
+        "contact_name": cFN.value + ' ' + cLN.value,
+        "contact_phone": cP.value,
+        "contact_msg": cM.value
+    });
+
+    // Clear Form Fields
+    cFN.value = '';
+    cLN.value = '';
+    cE.value = '';
+    cP.value = '';
+    cM.value = '';
+
+    // Display Sent Message
+    cS.innerHTML = 'Message Sent!';
+}
+
+document.addEventListener('submit', sendEmail);
+
 /* Service Worker Registration */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
