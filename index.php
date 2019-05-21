@@ -384,32 +384,32 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact-first-name">First Name</label>
-                                                    <input class="form-input" id="contact-first-name" type="text" name="name">
+                                                    <label for="contact-first-name">First Name *</label>
+                                                    <input class="form-input" id="contact-first-name" type="text" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact-last-name">Last Name</label>
-                                                    <input class="form-input" id="contact-last-name" type="text" name="name">
+                                                    <label for="contact-last-name">Last Name *</label>
+                                                    <input class="form-input" id="contact-last-name" type="text" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact-email">E-mail</label>
-                                                    <input class="form-input" id="contact-email" type="email" name="email">
+                                                    <label for="contact-email">E-mail *</label>
+                                                    <input class="form-input" id="contact-email" type="email" name="email" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="contact-phone">Phone</label>
-                                                    <input class="form-input" id="contact-phone" type="tel" name="phone">
+                                                    <label for="contact-phone">Phone *</label>
+                                                    <input class="form-input" id="contact-phone" type="tel" name="phone" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-msg">
                                                 <div class="form-group">
-                                                    <label for="contact-message">Your Message</label>
-                                                    <textarea class="form-input" id="contact-message" name="message"></textarea>
+                                                    <label for="contact-message">Your Message *</label>
+                                                    <textarea class="form-input" id="contact-message" name="message" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -505,6 +505,47 @@
 
             // Initialize maps
             google.maps.event.addDomListener(window, 'load', regular_map);
+        </script>
+
+        <!-- EmailJS -->
+        <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+        <script type="text/javascript">
+            (function(){
+                emailjs.init("user_VrokykbQ58y3reC5WyIMb");
+            })();
+
+            document.addEventListener('submit', sendEmail);
+
+            function sendEmail(e) {
+                e.preventDefault();
+
+                // Capture Form Elements
+                var cFN = document.getElementById('contact-first-name');
+                var cLN = document.getElementById('contact-last-name');
+                var cE = document.getElementById('contact-email');
+                var cP = document.getElementById('contact-phone');
+                var cM = document.getElementById('contact-message');
+                var cS = document.getElementById('contact-status');
+
+                // Sent data via EmailJS
+                emailjs.send('gmail', 'mikayla_s_mobile_grooming', 
+                {
+                    "contact_email": cE.value,
+                    "contact_name": cFN.value + ' ' + cLN.value,
+                    "contact_phone": cP.value,
+                    "contact_msg": cM.value
+                });
+
+                // Clear Form Fields
+                cFN.value = '';
+                cLN.value = '';
+                cE.value = '';
+                cP.value = '';
+                cM.value = '';
+
+                // Display Sent Message
+                cS.innerHTML = 'Message Sent!';
+            }
         </script>
 
         <!-- Custom JS -->
