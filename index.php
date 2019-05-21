@@ -10,6 +10,7 @@
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="./assets/favicon.ico">
+        <link rel="apple-touch-icon" href="./assets/logo.png">
         
         <!-- Manifest -->
         <link rel="manifest" href="./assets/manifest.json">
