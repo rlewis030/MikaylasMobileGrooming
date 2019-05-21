@@ -413,6 +413,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
+                                                <p id="contact-status"></p>
+                                            </div>
+                                            <div class="col-12">
                                                 <button class="btn btn-primary" type="submit">
                                                     Send Message
                                                 </button>
