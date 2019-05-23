@@ -175,7 +175,23 @@
                     <h3 class="text-center">Gallery of Previous Work</h3>
 
                     <div class="gallery" id="gallery-insert">
-                        <!-- Dynamically Added -->
+                        <?php
+                            $path = './assets/gallery/';
+                            $images = array_slice(scandir($path), 2);
+                            // Shuffle order of images
+                            shuffle($images);
+
+                            foreach ($images as $image) {
+                                echo    
+                                    '<div class="gallery-pics">' .
+                                        '<div class="img-overlay rounded">' .
+                                            '<a><i class="far fa-eye fa-3x"></i></a>' .
+                                            '<p>Preview</p>' .
+                                        '</div>' .
+                                        '<img class="img-fluid rounded" src="' . $path . $image . '" alt="">' .
+                                    '</div>';
+                            }
+                        ?>
                     </div>
                 </div>
             </section>
@@ -313,7 +329,42 @@
                         <div class="row">
                             <div class="col-xs-offset-3 col-xs-6">
                                 <div class="carousel-inner">
-                                    
+                                    <?php 
+                                        $path = './assets/testimonials/';
+                                        $files = array_slice(scandir($path), 2);
+
+                                        # Print inital active
+                                        $tContents = file_get_contents($path . $files[0]);
+                                        $tData = explode("\n", $tContents);
+
+                                        echo 
+                                            '<div class="carousel-item active">' .
+                                                '<div class="carousel-content">' .
+                                                    '<div>' .
+                                                        '<p>' . $tData[0] . '</p>' .
+                                                        '<h4>' . $tData[1] . '</h4>' .
+                                                    '</div>' .
+                                                '</div>' .
+                                            '</div>';  
+                                            
+                                        # Slice active testimonial from rest
+                                        $files = array_slice($files, 1);
+
+                                        foreach ($files as $file) {
+                                            $tContents = file_get_contents($path . $file);
+                                            $tData = explode("\n", $tContents);
+
+                                            echo 
+                                                '<div class="carousel-item">' .
+                                                    '<div class="carousel-content">' .
+                                                        '<div>' .
+                                                            '<p>' . $tData[0] . '</p>' .
+                                                            '<h4>' . $tData[1] . '</h4>' .
+                                                        '</div>' .
+                                                    '</div>' .
+                                                '</div>';  
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -465,16 +516,4 @@
 
         <!-- Custom JS -->
         <script type="text/javascript" src="./js/app.js"></script>
-        <script type="text/javascript">
-            $.ajax({
-                url : './assets/gallery/',
-                success: function (data) {
-                    $(data).find("a").attr("href", function (i, val) {
-                        if( val.match(/\.(jpe?g|png|gif)$/) ) { 
-                            $("#gallery-insert").append( "<img src='"+ val +"'>" );
-                        } 
-                    });
-                }
-            });
-        </script>
 </html>
